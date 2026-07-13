@@ -10,12 +10,21 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                {/*  j'ai modifié path="/" par index , route racine du site  */}
+                <Route index element={<HomePage />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/pricing" element={<Princing />} />
-                <Route path="/Login" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="*" element={<PageNotFound />} />
-                <Route path="/app" element={<AppLayout />} />
+                <Route path="/app" element={<AppLayout />}>
+                    {/*  c'est la route racine par default */}
+                    <Route index element={<p>List of cities</p>} />
+                    {/*  nested routes (des routes à l'interier de la meme page ) */}
+                    <Route path="cities" element={<p>List of cities</p>} />
+                    <Route path="countries" element={<p>Countries</p>} />
+                    <Route path="form" element={<p>Form</p>} />
+                    <Route path="*" element={<p>Form</p>} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );
